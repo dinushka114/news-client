@@ -86,7 +86,9 @@ export const authOptions = {
 
             }
         })
+
     ],
+    secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
         session: ({ session, token }) => {
             return {
@@ -95,7 +97,7 @@ export const authOptions = {
                     ...session.user,
                     id: token.id,
                     randomKey: token.randomKey,
-                    role:token.role
+                    role: token.role
                 }
             }
         },
@@ -106,7 +108,7 @@ export const authOptions = {
                     ...token,
                     id: u.id,
                     randomKey: u.randomKey,
-                    role:u.role
+                    role: u.role
                 }
             }
             return token
